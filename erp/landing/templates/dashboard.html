@@ -1,0 +1,122 @@
+{% extends "home_base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="mb-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-800">BitSync Management Dashboard</h1>
+                    <p class="text-gray-600 mt-1">Manage all your Business operations all in one place</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <div class="flex items-center space-x-4">
+                        <div class="relative">
+                            <input type="text" placeholder="Search..." class="pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <div class="absolute left-3 top-2.5 text-gray-400">
+                                <i data-feather="search" class="h-5 w-5"></i>
+                            </div>
+                        </div>
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                            <i data-feather="plus" class="h-5 w-5 inline-block mr-1"></i> New
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- App Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for app in apps %}
+            <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 card-hover">
+                <div class="p-6">
+                    <div class="flex items-center">
+                        <div class="{{ app.color }} rounded-lg p-3 text-white">
+                            <i data-feather="{{ app.icon }}" class="h-6 w-6"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h2 class="text-xl font-semibold text-gray-800">{{ app.name }}</h2>
+                            <p class="text-gray-600 mt-1">{{ app.description }}</p>
+                        </div>
+                    </div>
+                    <div class="mt-6 flex justify-between items-center">
+                        <a href="#" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                            Open
+                            <i data-feather="arrow-right" class="h-4 w-4 ml-1"></i>
+                        </a>
+                        <div class="flex space-x-2">
+                            <button class="text-gray-400 hover:text-gray-600">
+                                <i data-feather="star" class="h-5 w-5"></i>
+                            </button>
+                            <button class="text-gray-400 hover:text-gray-600">
+                                <i data-feather="more-vertical" class="h-5 w-5"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 px-6 py-3">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-500">Last updated: Today</span>
+                        <span class="text-gray-500">
+                            <i data-feather="activity" class="h-4 w-4 inline-block mr-1"></i> Active
+                        </span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Summary Section -->
+        <div class="mt-8 bg-white rounded-xl shadow-md p-6">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">Financial Overview</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <div class="flex items-center">
+                        <div class="bg-green-100 rounded-full p-2">
+                            <i data-feather="trending-up" class="h-5 w-5 text-green-600"></i>
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-gray-500 text-sm">Total Revenue</p>
+                            <p class="text-2xl font-bold text-gray-800">$24,780</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <div class="flex items-center">
+                        <div class="bg-red-100 rounded-full p-2">
+                            <i data-feather="trending-down" class="h-5 w-5 text-red-600"></i>
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-gray-500 text-sm">Total Expenses</p>
+                            <p class="text-2xl font-bold text-gray-800">$14,230</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <div class="flex items-center">
+                        <div class="bg-blue-100 rounded-full p-2">
+                            <i data-feather="dollar-sign" class="h-5 w-5 text-blue-600"></i>
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-gray-500 text-sm">Net Profit</p>
+                            <p class="text-2xl font-bold text-gray-800">$10,550</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Initialize Feather Icons -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            feather.replace();
+        });
+    </script>
+</div>
+{% endblock %}
+
+

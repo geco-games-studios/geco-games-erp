@@ -26,7 +26,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    'landing',
     'accounting',
+    
     'accounting.ledger',
     'accounting.cash_management',
     'accounting.asset_management',
@@ -56,7 +58,7 @@ ROOT_URLCONF = 'erp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "erp/templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
