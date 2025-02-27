@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Financial Reports{% endblock %}
+
+{% block content %}
+<div class="bg-white rounded-lg shadow p-6">
+    <h1 class="text-2xl font-bold text-gray-800 mb-4">Financial Reports</h1>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Trial Balance Card -->
+        <div class="bg-gray-100 rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow duration-200">
+            <h2 class="text-xl font-semibold text-gray-800">Trial Balance</h2>
+            <p class="text-gray-600 mb-4">A report that lists the balances of all general ledger accounts.</p>
+            <a href="{% url 'trial_balance' %}" class="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-200">
+                View Report
+            </a>
+        </div>
+
+        <!-- Income Statement Card -->
+        <div class="bg-gray-100 rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow duration-200">
+            <h2 class="text-xl font-semibold text-gray-800">Income Statement</h2>
+            <p class="text-gray-600 mb-4">A financial statement that summarizes revenues and expenses.</p>
+            <a href="{% url 'income_statement' %}" class="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-200">
+                View Report
+            </a>
+        </div>
+
+        <!-- Balance Sheet Card -->
+        <div class="bg-gray-100 rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow duration-200">
+            <h2 class="text-xl font-semibold text-gray-800">Balance Sheet</h2>
+            <p class="text-gray-600 mb-4">A statement of the financial position of an organization at a specific point in time.</p>
+            <a href="{% url 'balance_sheet' %}" class="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-200">
+                View Report
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

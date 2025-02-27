@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}{{ account.name }}{% endblock %}
+
+{% block content %}
+<div class="bg-white rounded-lg shadow p-6">
+    <h1 class="text-2xl font-bold mb-4 text-gray-800">{{ account.name }}</h1>
+    <p class="mb-2 text-gray-700">{{ account.description }}</p>
+    <p class="mb-4 text-gray-700 font-semibold">Balance: ${{ account.balance }}</p>
+    <a href="{% url 'ledger_account_list' %}" class="inline-block mt-4 text-blue-500 hover:underline">Back to list</a>
+</div>
+{% endblock %}

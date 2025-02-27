@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Income Statement{% endblock %}
+
+{% block content %}
+<div class="bg-gray-100 flex justify-center items-center min-h-screen">
+    <div class="w-full max-w-3xl p-6 bg-white rounded-lg shadow-md">
+        <h1 class="text-2xl font-bold mb-4 text-gray-800">Income Statement</h1>
+        <table class="min-w-full bg-white border border-gray-300">
+            <thead>
+                <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                    <th class="py-3 px-4 border-b">Description</th>
+                    <th class="py-3 px-4 border-b">Amount</th>
+                </tr>
+            </thead>
+            <tbody class="text-gray-600 text-sm font-light">
+                <tr class="border-b hover:bg-gray-100">
+                    <td class="py-2 px-4">Total Revenue</td>
+                    <td class="py-2 px-4">{{ total_revenue }}</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-100">
+                    <td class="py-2 px-4">Total Expenses</td>
+                    <td class="py-2 px-4">{{ total_expenses }}</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-100 font-bold">
+                    <td class="py-2 px-4">Net Income</td>
+                    <td class="py-2 px-4">{{ net_income }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="mt-4">
+            <a href="{% url 'financial_reports' %}" class="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-200">Back to Financial Reports</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

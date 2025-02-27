@@ -1,0 +1,83 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}The Accountant{% endblock %}</title>
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .dropdown {
+            display: none;
+        }
+        .dropdown-button:hover + .dropdown,
+        .dropdown:hover {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex">
+
+    <!-- Side Drawer -->
+    <aside class="w-64 bg-gray-800 text-white h-screen p-4 fixed">
+        <h2 class="text-lg font-semibold mb-4">Menu</h2>
+        <nav>
+            <ul>
+                <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700">Dashboard</a></li>
+                {% comment %} <li>
+                    <a href="{% url 'ledger_account_list' %}" class="block py-2 px-4 rounded hover:bg-gray-700">Accounts</a>
+                </li> {% endcomment %}
+                {% comment %} <li><a href="{% url 'transaction_list' %}" class="block py-2 px-4 rounded hover:bg-gray-700">Transactions</a></li> {% endcomment %}
+                {% comment %} <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700">Settings</a></li> {% endcomment %}
+
+                <!-- Chart of Accounts and related functionalities -->
+                <li><a href="{% url 'ledger_account_list' %}" class="block py-2 px-4 hover:bg-gray-700">Accounts</a></li>
+                <!-- Journal Entries -->
+                <li><a href="{% url 'transaction_list' %}" class="block py-2 px-4 hover:bg-gray-700">Journal Entries</a></li>
+                <!-- Financial Reports -->
+                <li><a href="{% url 'financial_reports' %}" class="block py-2 px-4 hover:bg-gray-700">Financial Reports</a></li>
+                <!-- Budgeting & Forecasting -->
+                <li><a href="{% url 'budget_forecast_list' %}" class="block py-2 px-4 rounded hover:bg-gray-700">Budgeting & Forecasting</a></li>
+
+                <!-- Reconciliation and Multi-Currency -->
+                <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700">Account Reconciliation</a></li>
+                <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700">Multi-Currency Support</a></li>
+
+                <!-- Analytics and Audit -->
+                <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700">Reporting & Analytics</a></li>
+                <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700">Audit Trails</a></li>
+
+                <!-- Tax Management -->
+                <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700">Tax Management</a></li>
+
+                {% for account in accounts %}
+                <li class="mb-2">
+                    <a href="{% url 'ledger_account_detail' account.pk %}" class="block py-2 px-4 rounded hover:bg-gray-700">Balance</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 ml-64">
+        <!-- Navbar -->
+        <nav class="bg-white p-4 shadow">
+            <div class="flex justify-between items-center">
+                <div class="text-xl font-semibold text-gray-800">The Accountant</div>
+                <div class="space-x-4">
+                    <a href="#" class="text-gray-600 hover:text-gray-800">Home</a>
+                    <a href="#" class="text-gray-600 hover:text-gray-800">Profile</a>
+                    <a href="#" class="text-gray-600 hover:text-gray-800">Logout</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Dynamic Content Area -->
+        <main class="p-8">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+</body>
+</html>

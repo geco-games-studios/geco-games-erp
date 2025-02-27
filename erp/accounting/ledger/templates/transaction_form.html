@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Create Transaction{% endblock %}
+
+{% block content %}
+<div class="flex items-center justify-center h-screen">
+    <div class="bg-white border-2 border-gray-300 rounded-lg shadow-lg p-4 w-full max-w-sm">
+        <h1 class="text-2xl font-bold mb-4 text-gray-800 text-center">Create Transaction</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="space-y-2"> 
+                {{ form.as_p }}  <!-- Render the form fields -->
+            </div>
+            <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-200 mt-4">
+                Save
+            </button>
+        </form>
+        {% comment %} <a href="{% url 'transaction_entry_detail' transaction.pk %}" class="block text-center mt-2 text-blue-500 hover:underline">
+            Back to list
+        </a> {% endcomment %}
+    </div>
+</div>
+
+<!-- Initialize Flatpickr -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        flatpickr("input[type='date']", {
+            dateFormat: "Y-m-d",  
+            enableTime: false,     
+            altInput: true,        
+            altFormat: "F j, Y",   
+            placeholder: "Select date",  
+        });
+    });
+</script>
+{% endblock %}

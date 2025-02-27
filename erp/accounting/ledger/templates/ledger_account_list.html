@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Ledger Accounts{% endblock %}
+
+{% block content %}
+<div class="bg-white rounded-lg shadow p-6">
+    <div class="flex justify-between items-center mb-4">
+        <h1 class="text-2xl font-bold text-gray-800">Ledger Accounts</h1>
+        <a href="{% url 'ledger_account_create' %}" class="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-200">
+            Create new account
+        </a>
+    </div>
+    <table class="min-w-full bg-white border border-gray-300">
+        <thead>
+            <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                <th class="py-3 px-6 text-left">Account Name</th>
+                <th class="py-3 px-6 text-left">Description</th>
+                <th class="py-3 px-6 text-left">Balance</th>
+                <th class="py-3 px-6 text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody class="text-gray-600 text-sm font-light">
+            {% for account in accounts %}
+            <tr class="border-b border-gray-300 hover:bg-gray-100">
+                <td class="py-3 px-6">{{ account.name }}</td>
+                <td class="py-3 px-6">{{ account.description }}</td>
+                <td class="py-3 px-6">{{ account.balance }}</td>
+                <td class="py-3 px-6 text-center">
+                    <a href="{% url 'ledger_account_detail' account.pk %}" class="inline-block bg-green-500 text-white py-1 px-3 rounded hover:bg-green-600 transition duration-200">View</a>
+                    |
+                    <a href="{% url 'ledger_account_update' account.pk %}" class="inline-block bg-yellow-500 text-white py-1 px-3 rounded hover:bg-yellow-600 transition duration-200">Update</a>
+                    |
+                    <a href="{% url 'ledger_account_delete' account.pk %}" class="inline-block bg-red-500 text-white py-1 px-3 rounded hover:bg-red-600 transition duration-200">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
